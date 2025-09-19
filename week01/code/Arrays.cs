@@ -13,7 +13,16 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Step 1: Initialize a new array of doubles with the specified length. This will hold the multiples.
+        // Step 2: Use a for loop to iterate from 0 to length-1. For each index i, calculate the multiple as number * (i + 1) and assign it to the array at position i.
+        // Step 3: After the loop, return the completed array.
+
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = number * (i + 1);
+        }
+        return result;
     }
 
     /// <summary>
@@ -29,5 +38,18 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        // Step 1: Calculate the split point: the index where the rotation starts, which is data.Count - amount.
+        // Step 2: Extract the last 'amount' elements into a new list using GetRange(data.Count - amount, amount). This will be the new front part.
+        // Step 3: Extract the first (data.Count - amount) elements into another new list using GetRange(0, data.Count - amount). This will be the new back part.
+        // Step 4: Clear the original data list to remove all elements.
+        // Step 5: Add the front part (lastPart) to the data list using AddRange.
+        // Step 6: Add the back part (firstPart) to the data list using AddRange. The list is now rotated in place.
+
+        int n = data.Count;
+        List<int> lastPart = data.GetRange(n - amount, amount);
+        List<int> firstPart = data.GetRange(0, n - amount);
+        data.Clear();
+        data.AddRange(lastPart);
+        data.AddRange(firstPart);
     }
 }
