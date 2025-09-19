@@ -13,8 +13,8 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        // Step 1: Initialize a new array of doubles with the specified length. This will hold the multiples.
-        // Step 2: Use a for loop to iterate from 0 to length-1. For each index i, calculate the multiple as number * (i + 1) and assign it to the array at position i.
+        // Step 1: Create a new array of double numbers with the given length. This array will store the multiples.
+        // Step 2: Use a for loop to go from 0 to length minus 1. For each spot i, figure out the multiple by multiplying number by (i plus 1) and put it in the array at spot i.
         // Step 3: After the loop, return the completed array.
 
         double[] result = new double[length];
