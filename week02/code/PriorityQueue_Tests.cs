@@ -6,11 +6,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 public class PriorityQueueTests
 {
     [TestMethod]
-    // Scenario: Enqueue items with different priorities and dequeue them.
+    // Scenario: Adding items to a priority queue with different priorities (Low with priority 1, High with priority 3, Medium with priority 2) and then dequeue them.
     // Expected Result: Items are dequeued in order of highest priority: High (3), Medium (2), Low (1).
     // Defect(s) Found: 
-    // 1. Dequeue loop only iterates to _queue.Count - 2, missing the last item.
-    // 2. Condition uses >=, selecting the last item for equal priorities instead of the first (violates FIFO).
+    // 1. The loop in the Dequeue method only checks up to the second-to-last item (_queue.Count - 2), so it misses the last item in the queue.
+    // 2. The code uses >= to compare priorities, which means if two items have the same priority, it picks the last one instead of the first one, breaking the "first-in, first-out" (FIFO) rule.
     // 3. Dequeue does not remove the item (_queue.RemoveAt missing), causing incorrect subsequent dequeues.
     public void TestPriorityQueue_DifferentPriorities()
     {

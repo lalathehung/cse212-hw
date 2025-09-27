@@ -13,7 +13,7 @@ public class TakingTurnsQueueTests
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
     // Defect(s) Found: 
     // 1. PersonQueue implemented LIFO (stack) instead of FIFO (queue) due to Enqueue using _queue.Insert(0), causing reversed order (Sue first instead of Bob).
-    // 2. GetNextPerson condition if (person.Turns > 1) is incorrect; when turns = 1, it doesn't decrement and re-enqueue, and infinite turns (0 or negative) are not handled, causing people to be removed prematurely.
+    // 2. GetNextPerson condition if (person.Turns > 1) is incorrect; when turns = 1, it doesn't decrement and re-enqueue, and infinite turns (0 or negative) are not handled, causing people to be removed too early.
     // 3. Queue empties too early, failing to produce the expected 10-person sequence.
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
@@ -49,7 +49,7 @@ public class TakingTurnsQueueTests
     // Defect(s) Found: 
     // 1. PersonQueue uses LIFO (Insert(0)), causing reversed initial order (Sue first).
     // 2. GetNextPerson logic fails to re-enqueue when turns = 1 and ignores infinite turns, disrupting sequence after adding George.
-    // 3. Queue empties prematurely, not producing the full expected sequence.
+    // 3. Queue empties too early, not producing the full expected sequence.
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
